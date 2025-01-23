@@ -1,0 +1,64 @@
+{
+  "name": "lch",
+  "displayName": "Leetcode Helper",
+  "description": "Fetches test cases from LeetCode and runs them locally in vs-code.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "lch.fetchTestCases",
+        "title": "LCH: Fetch Test Cases"
+      },
+      {
+        "command": "lch.runTestCases",
+        "title": "LCH: Run Test Cases"
+      }
+    ],
+    "configuration": {
+      "title": "LCH",
+      "properties": {
+        "lch.language.cpp.compile": {
+          "type": "string",
+          "default": "g++ -std=c++17 -o $fileNameWithoutExt $fileName",
+          "description": "Compile command for C++"
+        },
+        "lch.language.cpp.run": {
+          "type": "string",
+          "default": "$fileNameWithoutExt$executableExtension",
+          "description": "Run command for C++"
+        },
+        "lch.language.python.run": {
+          "type": "string",
+          "default": "python $fileName",
+          "description": "Run command for Python"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.16.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  },
+  "dependencies": {
+    "puppeteer": "^24.1.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
